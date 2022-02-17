@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <html lang = 'en'>
+    <!--
+    Author: Matthew O'Malley
+    Class:  Software Engineering
+    Project: Regular Expression Tester SaaS
+    Description: Program that Tests Regular Expressions -->
+
+    <head>
+        <meta charset = 'UTF-8'>
+        <title>JS Regular Expressions Tester</title>
+        <link rel="icon" type="image/x-icon" href="regexpimage.png">
+        <link rel = "stylesheet" href = "index.css">
+    </head>
+
+    <body>
+
+    <!-- Header features title and title image -->
+    <header>
+        <h1><span style = "background-color:rgb(83, 117, 122); border-radius: 50px">
+            &nbsp;Regular Expression Tester&nbsp;</span></h1>
+        <img src="regexpimage.png" alt = "RegExp icon">
+    </header>
+
+    <p>
+
+    <!-- Form objects that accept a regular expression, a string, and a result that
+    is activated by a button -->
+    <form class = "form">
+        <label>Enter Regular Expression: &nbsp;</label>
+        <input type = "text" name = "reg-exp" id = "re" required><br><br>
+        <label>Enter Test String: &nbsp;</label>
+        <input type = "text" name = "test-str" id = "ts" required><br><br>
+
+        <button class = "button" type = "button" onclick = "testInput()">Check</button><br><br>
+        <input type = "text" name = "output" id = "op" required readonly>
+    </form>
+
+    <p>
+        <button class = "button" type = "button" onclick = "clearIt()">Clear</button><br>
+    </p>
+
+    <script>
+        
+        function clearIt() {
+            document.getElementById("re").value = "";
+            document.getElementById("ts").value = "";
+            document.getElementById("op").value = "";
+        }
+
+        // function that tests the regular expression against the string and
+        // prints out the result to the page.
+        function testInput() {
+
+            const exp = document.getElementById("re").value;
+            const str = document.getElementById("ts").value;
+            const answer = document.getElementById("op");
+            let midstring;
+            const regex = new RegExp(exp, "i")
+
+            if (regex.test(str)) {
+                midstring = 'contains ';
+            } else {
+                midstring = 'does not contain ';
+            }
+            // only allows Check button function if there is input
+            if (exp.length > 1 && str.length > 1) {
+                answer.value = str + " " + midstring + exp;
+            }
+        }
+
+        // empties all entries upon page load
+        document.getElementById("re").value = "";
+        document.getElementById("ts").value = "";
+        document.getElementById("op").value = "";
+    </script>
+
+    <!-- Button that returns to Assignment Portfolio Page -->
+    <p>
+        <button class = "button" type = "button" onclick = "window.location.href=
+        'https://green-river-0800d2310.1.azurestaticapps.net/'">Click to Return</button>
+    </p>
+
+    </body>
