@@ -7,10 +7,10 @@ const app = express()
 // define directory for files to server
 app.use(express.static(__dirname + '/public/assignment-portfolio'))
 
+// need to add routes for other pages to work, but good enough for now
+
 // define the port
 const port = process.env.PORT || 8080;
-
-app.get('/', (req, res) => res.render('assignment-portfolio'))
 
 // listen on the port
 app.listen(port, () => console.log(
